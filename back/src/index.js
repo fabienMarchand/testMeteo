@@ -38,11 +38,11 @@ app.get('/meteo/city/:name', async (req, res, next) => {
     );
 
     const test = await axios.get(
-      `https://api.meteo-concept.com/api/location/cities?token=${process.env.METEO_TOKEN}&insee=${getInfo.insee}`
+      `https://api.meteo-concept.com/api/forecast/daily/0?token=${process.env.METEO_TOKEN}&insee=${getInfo.insee}`
     );
-    console.log(test);
 
-    res.status(200).json(getInfo);
+
+    res.status(200).json(test.data);
   } catch (error) {
     console.log(error);
   }
