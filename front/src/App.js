@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div className="app">
-       <h1>Dynamic Table</h1>
+       <h1>City Table for meteo</h1>
       <Table data={dataTable} column={column} />
     </div>
   );

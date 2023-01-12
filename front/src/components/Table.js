@@ -26,6 +26,7 @@ const TableRow = ({ item, column }) => (
           return <td>{item[itemSplit[0]][itemSplit[1]]}</td>
         }
   
+  //TODO onclick pour afficher les détails
         return <td>{item[`${columnItem.value}`]}</td>
       })}
     </tr>
