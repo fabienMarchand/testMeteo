@@ -18,6 +18,10 @@ app.use(express.json()); // Access data sent as json @req.body
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// a ajouter pour la communication entre le front et le back en dev lorsque express est instancié
+app.use(cors({
+  credentials: true
+}));
 // Initialisation de la base avec les deux tables nécessaires (à garder)
 db.init();
 // exemple de requete sql à supprimer
@@ -61,14 +65,6 @@ app.get('/meteo/city', async function (req, res, next) {
   }
 });
 
-// pour permettre la communication entre le front et le back en dev.
-//const corsOptions = { origin: process.env.FRONTEND_URL, credentials: true };
-//app.use(cors(corsOptions));
-
-// a ajouter pour la communication entre le front et le back en dev lorsque express est instancié
-/*app.use(cors({
-  credentials: true
-}));*/
 
 // 404 Middleware
 app.use((req, res, next) => {
@@ -78,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 // Server Started
-app.listen(3000, () => console.log('My app listening on port 3000! '));
+app.listen(8080, () => console.log('My app listening on port 3000! '));
 
 // dans le cas où le front est fait en js natif, voici une ligne de commande à ajouter pour servir le front à partir du projet node
 // si vous faîtes du VueJS ou du React ce n'est pas nécessaire
